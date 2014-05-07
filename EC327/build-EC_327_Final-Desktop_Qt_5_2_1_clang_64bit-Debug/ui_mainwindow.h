@@ -81,6 +81,7 @@ public:
         Set_Stack = new QStackedWidget(centralWidget);
         Set_Stack->setObjectName(QStringLiteral("Set_Stack"));
         Set_Stack->setGeometry(QRect(10, 0, 711, 471));
+        Set_Stack->setAutoFillBackground(true);
         Game_Screen = new QWidget();
         Game_Screen->setObjectName(QStringLiteral("Game_Screen"));
         gridLayoutWidget = new QWidget(Game_Screen);

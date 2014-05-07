@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[8];
-    char stringdata[167];
+    QByteArrayData data[21];
+    char stringdata[382];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,14 +36,33 @@ QT_MOC_LITERAL(3, 35, 28),
 QT_MOC_LITERAL(4, 64, 23),
 QT_MOC_LITERAL(5, 88, 27),
 QT_MOC_LITERAL(6, 116, 28),
-QT_MOC_LITERAL(7, 145, 20)
+QT_MOC_LITERAL(7, 145, 20),
+QT_MOC_LITERAL(8, 166, 16),
+QT_MOC_LITERAL(9, 183, 7),
+QT_MOC_LITERAL(10, 191, 16),
+QT_MOC_LITERAL(11, 208, 16),
+QT_MOC_LITERAL(12, 225, 16),
+QT_MOC_LITERAL(13, 242, 16),
+QT_MOC_LITERAL(14, 259, 16),
+QT_MOC_LITERAL(15, 276, 16),
+QT_MOC_LITERAL(16, 293, 16),
+QT_MOC_LITERAL(17, 310, 16),
+QT_MOC_LITERAL(18, 327, 17),
+QT_MOC_LITERAL(19, 345, 17),
+QT_MOC_LITERAL(20, 363, 17)
     },
     "MainWindow\0on_Play_Button_clicked\0\0"
     "on_High_Score_Button_clicked\0"
     "on_Rules_Button_clicked\0"
     "on_Rule_Back_Button_clicked\0"
     "on_Back_Score_Button_clicked\0"
-    "on_setButton_clicked\0"
+    "on_setButton_clicked\0on_card1_clicked\0"
+    "checked\0on_card2_clicked\0on_card3_clicked\0"
+    "on_card4_clicked\0on_card5_clicked\0"
+    "on_card6_clicked\0on_card7_clicked\0"
+    "on_card8_clicked\0on_card9_clicked\0"
+    "on_card10_clicked\0on_card11_clicked\0"
+    "on_card12_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,7 +72,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,12 +80,24 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x08,
-       3,    0,   45,    2, 0x08,
-       4,    0,   46,    2, 0x08,
-       5,    0,   47,    2, 0x08,
-       6,    0,   48,    2, 0x08,
-       7,    0,   49,    2, 0x08,
+       1,    0,  104,    2, 0x08,
+       3,    0,  105,    2, 0x08,
+       4,    0,  106,    2, 0x08,
+       5,    0,  107,    2, 0x08,
+       6,    0,  108,    2, 0x08,
+       7,    0,  109,    2, 0x08,
+       8,    1,  110,    2, 0x08,
+      10,    1,  113,    2, 0x08,
+      11,    1,  116,    2, 0x08,
+      12,    1,  119,    2, 0x08,
+      13,    1,  122,    2, 0x08,
+      14,    1,  125,    2, 0x08,
+      15,    1,  128,    2, 0x08,
+      16,    1,  131,    2, 0x08,
+      17,    1,  134,    2, 0x08,
+      18,    1,  137,    2, 0x08,
+      19,    1,  140,    2, 0x08,
+      20,    1,  143,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void,
@@ -75,6 +106,18 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void, QMetaType::Bool,    9,
 
        0        // eod
 };
@@ -90,10 +133,21 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_Rule_Back_Button_clicked(); break;
         case 4: _t->on_Back_Score_Button_clicked(); break;
         case 5: _t->on_setButton_clicked(); break;
+        case 6: _t->on_card1_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->on_card2_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->on_card3_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 9: _t->on_card4_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 10: _t->on_card5_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 11: _t->on_card6_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 12: _t->on_card7_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->on_card8_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 14: _t->on_card9_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->on_card10_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 16: _t->on_card11_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 17: _t->on_card12_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -121,13 +175,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 18;
     }
     return _id;
 }
