@@ -15,6 +15,7 @@
 #include <QTextStream>
 #include <QString>
 #include <fstream>
+#include <string>
 #define IO_ReadOnly QIODevice::ReadOnly
 
 Game::Game() {
@@ -35,25 +36,15 @@ bool Game::gameOver() {
 
 bool Game::highScore() {
 
-    QFile file("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
-    QString line;
-    if (!file.open(IO_ReadOnly)) // Open the file
-    {
+    ifstream datafile;
+    datafile.open("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
 
-    }
-    QTextStream stream( &file ); // Set the stream to read from myFile
-
-
-    line = stream.readLine();
     bool onTheList=false;
     vector<string> players;
     vector<int> scores;
     for(int i=0;i<5;i++) {
-
-        cout << stream.readLine().toStdString() << endl;
-        cout << players[i] << endl;
-
-
+        getline(datafile, players[i]);
+        datafile >> scores[i];
     }
     
 
