@@ -12,9 +12,10 @@
 #include <iostream>
 #include "Board.h"
 #include "Player.h"
+#include <QBasicTimer>
 
 class Game{
-private:
+public:
     Player ai;
 public:
     Game();
@@ -26,7 +27,7 @@ public:
     bool highScore();
     void setActive(int x, int y);
     int num_active;
-    void findSet();
+    bool findSet(bool test);
     
 };
 #endif /* defined(__Set__Game__) */

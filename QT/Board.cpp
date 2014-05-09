@@ -5,12 +5,14 @@
 //  Created by Christine Duong
 //  Copyright (c) 2014 Christine Duong. All rights reserved.
 //
-
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include "Board.h"
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
 #include "Card.h"
+
 
 Board::Board() {
     for(int i=0; i<3;i++) { //Makes the deck
@@ -23,7 +25,7 @@ Board::Board() {
         }
     }
     
-    srand(time(NULL)); //this seeds srand so we get different rand results
+    std::srand(time(0)); //this seeds srand so we get different rand results
     random_shuffle(deck.begin(), deck.end()); // shuffles the deck
     
     width=3;
@@ -55,6 +57,8 @@ void Board::draw(Card *position){
 
 bool Board::check_set(Card one, Card two, Card three) { //checks to see if three cards make a set
     
+    if(one.get_color() == -1 || two.get_color() == -1 || three.get_color() == -1)
+        return false;
     bool sameColor = one.get_color()==two.get_color() && two.get_color()==three.get_color();
     bool diffColor = one.get_color()!=two.get_color() && two.get_color()!=three.get_color() && one.get_color()!=three.get_color();
     bool sameNumber = one.get_number()==two.get_number() && two.get_number()==three.get_number();
@@ -69,7 +73,6 @@ bool Board::check_set(Card one, Card two, Card three) { //checks to see if three
 }
 
 bool Board::isThereASet() { //iterates through the board
-    bool set=false;
     for (int i=0; i<length; i++) {
         for (int j=0; j<width; j++) { //first card
             
@@ -81,9 +84,8 @@ bool Board::isThereASet() { //iterates through the board
                             
                             if (board[i][j]!=board[k][l] && board[k][l]!=board[m][n] && board[i][j]!=board[m][n]) {
                                 //if the cards picked are not the same
-                                
                                 if (check_set(board[i][j], board[k][l], board[m][n])) {
-                                    set=true;
+                                    return true;
                                 }
                                 
                             }
@@ -92,8 +94,50 @@ bool Board::isThereASet() { //iterates through the board
                 }
             }
         }
+
     }
-    return set;
+return false;
+}
+bool Board::pop_back_check()
+{
+    for (int i = 0; i < 3 ; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            deck.push_back(board[i][j]);
+        }
+    }
+    return (check_deck());
+}
+void Board::replot_board()
+{
+    std::srand(time(0)); //this seeds srand so we get different rand results
+    random_shuffle(deck.begin(), deck.end()); // shuffles the deck
+
+    for (int i=0;i<3; i++) {
+        for (int j=0; j<4; j++) {
+            board[i][j] = deck.back();
+            deck.pop_back();
+        }
+    }
+}
+
+bool Board::check_deck()
+{
+    for(unsigned int i=0; i < deck.size(); i++){
+        for(unsigned int j=0; j < deck.size(); j++){
+            for(unsigned int k=0; k < deck.size(); k++){
+               if((i != j) && (j != k))
+               {
+                   if (check_set(deck[i], deck[j], deck[k]))
+                   {
+                       return true;
+                   }
+               }
+            }
+        }
+    }
+    return false;
 }
 
 int Board::deckSize() {

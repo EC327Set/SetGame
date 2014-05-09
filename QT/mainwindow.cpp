@@ -10,15 +10,18 @@
 #include <QTimer>
 #include "Game.h"
 #include <QMessageBox>
+#include <QString>
+#include <QFile>
+#include <QTextStream>
+#include <QString>
+#include <fstream>
+#define IO_ReadOnly QIODevice::ReadOnly
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     game = new Game();
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(5000);
 
     ui->deckSize->setNum(game->board.deckSize());
 
@@ -75,7 +78,62 @@ MainWindow::MainWindow(QWidget *parent) :
 */
     resetDisable();
     testCards();
-    std::cout<<game->board.isThereASet();
+
+}
+void MainWindow::timerEvent(QTimerEvent *event)
+{
+    if (event->timerId() == timer_player.timerId())
+    {
+        timer_player.stop();
+        resetClicked();
+        resetDisable();
+    }
+    if (event->timerId() == timer_computer.timerId())
+    {
+        if(!(timer_player.isActive()))
+        {
+        game->findSet(false);
+        check_board_shuffle();
+        testCards();
+        ui->aiScore->setNum(game->ai.get_amount());
+        ui->deckSize->setNum(game->board.deckSize());
+        }
+
+    }
+
+}
+void MainWindow::check_board_shuffle()
+{
+    int counter = 0;
+    while(true)
+    {
+        if(counter > 6)
+            return;
+        if((game->findSet(true)))
+        {
+            if(counter!= 0){
+                timer_computer.stop();
+                QMessageBox::information(this,tr("Message"),tr("No Sets Found \n Board Reshuffled"));
+                timer_computer.start(time_c, this);
+            }
+            return;
+        }
+        else
+        {
+            counter++;
+            if(game->board.pop_back_check()){
+                game->board.replot_board();
+            }
+            else
+            {
+                game->board.replot_board();
+                ui->deckSize->setNum(game->board.deckSize());
+                timer_computer.stop();
+                endgame();
+                return;
+            }
+        }
+    }
 }
 
 MainWindow::~MainWindow()
@@ -86,12 +144,46 @@ MainWindow::~MainWindow()
 void MainWindow::on_Play_Button_clicked()
 {
     ui->Set_Stack->setCurrentIndex(0); //Game Screen
+    timer_computer.start(time_c, this);
 
 }
 
 void MainWindow::on_High_Score_Button_clicked()
 {
     ui->Set_Stack->setCurrentIndex(3); //High Scores
+    QFile file("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
+    QString line;
+    if (!file.open(IO_ReadOnly)) // Open the file
+    {
+       //ui->textEdit->append("High Score File Not Found.\nError 401");
+       //ui->textEdit->append("Please contact: asthana@bu.edu");
+    }
+    QTextStream stream( &file ); // Set the stream to read from myFile
+
+    while(!stream.atEnd()){
+
+    line = stream.readLine(); // this reads a line (QString) from the file
+    ui->Name1->setText(line);
+    line = stream.readLine();
+    ui->Score1->setText(line);
+    line = stream.readLine();
+    ui->Name2->setText(line);
+    line = stream.readLine();
+    ui->Score2->setText(line);
+    line = stream.readLine();
+    ui->Name3->setText(line);
+    line = stream.readLine();
+    ui->Score3->setText(line);
+    line = stream.readLine();
+    ui->Name4->setText(line);
+    line = stream.readLine();
+    ui->Score4->setText(line);
+    line = stream.readLine();
+    ui->Name5->setText(line);
+    line = stream.readLine();
+    ui->Score5->setText(line);
+    }
+    file.close();
 }
 
 void MainWindow::on_Rules_Button_clicked()
@@ -125,6 +217,7 @@ void MainWindow::on_setButton_clicked()
     ui->card11->setEnabled(true);
     ui->card12->setEnabled(true);
     game->player.turn=true;
+    timer_player.start(time_p, this);
 }
 
 void MainWindow::on_card1_clicked(bool checked)
@@ -318,12 +411,15 @@ void MainWindow::checkSet() {
         resetClicked();
     }
     else {
+        timer_computer.stop();
         QMessageBox::information(this,tr("Message"),tr("This is not a set."));
+        timer_computer.start(time_c, this);
         resetClicked();
     }
     game->num_active=0;
     testCards();
     resetDisable();
+    check_board_shuffle();
 }
 
 void MainWindow::resetClicked() {
@@ -392,4 +488,23 @@ void MainWindow::testCards() {//for testing before images
 
     QString message12=QString::number(game->board.board[2][3].get_shading())+QString::number(game->board.board[2][3].get_color())+QString::number(game->board.board[2][3].get_shape())+QString::number(game->board.board[2][3].get_number());
     ui->card12->setText(message12);
+}
+void MainWindow::endgame()
+{
+timer_computer.stop();
+timer_player.stop();
+if(game->player.get_amount() > game->ai.get_amount())
+QMessageBox::information(this,tr("Message"),tr("Player Wins!"));
+else if(game->player.get_amount() < game->ai.get_amount())
+QMessageBox::information(this,tr("Message"),tr("Computer Wins!"));
+else
+QMessageBox::information(this,tr("Message"),tr("Tie"));
+if(game->highScore())
+QMessageBox::information(this,tr("Message"),tr("High Score!!"));
+}
+
+void MainWindow::on_Back_Button_Main_clicked()
+{
+    ui->Set_Stack->setCurrentIndex(1);
+    timer_computer.stop();
 }

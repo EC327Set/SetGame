@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include "Card.h"
+#include <time.h>
 
 using namespace std;
 
@@ -29,6 +30,9 @@ public:
     void draw(Card * position);
     bool isThereASet();
     int deckSize();
+    bool check_deck();
+    bool pop_back_check();
+    void replot_board();
 };
 
 

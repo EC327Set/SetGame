@@ -45,6 +45,8 @@ int Card::get_number() {
 }
 
 bool operator!=(Card & c1, Card & c2){
+    if((c1.get_color() == -1) ||( c2.get_color() == -1))
+        return false;
     bool sameColor = (c1.get_color()==c2.get_color());
     bool sameShading = (c1.get_shading() == c2.get_shading());
     bool sameShape = (c1.get_shape() == c2.get_shape());

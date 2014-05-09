@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "ui_mainwindow.h"
 #include "Game.h"
+#include <QBasicTimer>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +15,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+    QBasicTimer timer_player;
+    QBasicTimer timer_computer;
+    const int time_p = 6000;
+    const int time_c = 200;
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -54,6 +61,8 @@ private slots:
 
     void on_card12_clicked(bool checked);
 
+    void on_Back_Button_Main_clicked();
+
 private:
     Ui::MainWindow *ui;
     Game* game;
@@ -61,6 +70,10 @@ private:
     void resetClicked();
     void resetDisable();
     void testCards();
+    void endgame();
+    void check_board_shuffle();
+protected:
+    void timerEvent(QTimerEvent *event);
 };
 
 #endif // MAINWINDOW_H

@@ -50,7 +50,7 @@ bool Game::highScore() {
     vector<int> scores;
     for(int i=0;i<5;i++) {
 
-        cout << stream.readLine().toStdString() << endl;
+        cout <<  << endl;
         cout << players[i] << endl;
 
 
