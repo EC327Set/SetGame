@@ -18,8 +18,8 @@ public:
 
     QBasicTimer timer_player;
     QBasicTimer timer_computer;
-    const int time_p = 6000;
-    const int time_c = 200;
+    const int time_p = 4000;// Time the player has to pick the cards in his set
+    const int time_c = 10000;//Lets you set the computer speed
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -72,6 +72,7 @@ private:
     void testCards();
     void endgame();
     void check_board_shuffle();
+    void showCards();
 protected:
     void timerEvent(QTimerEvent *event);
 };

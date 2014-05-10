@@ -29,8 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap pic("/Users/christineduong/Desktop/Set/setLogo.png");
     ui->label->setPixmap(pic);
 
-    QPixmap pixmap("/Users/christineduong/Desktop/Set/cards/card2003.png");
-    QIcon ButtonIcon(pixmap);
+
 
     //this will allow users to unclick a card if they want to
     ui->card1->setCheckable(true);
@@ -47,9 +46,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->card12->setCheckable(true);
     ui->setButton->setCheckable(true);
 
+
     game = new Game();
     //makes a new game object
+    showCards();
 
+<<<<<<< HEAD
     ui->card1->setIcon(ButtonIcon);
     ui->card2->setIcon(ButtonIcon);
     ui->card3->setIcon(ButtonIcon);
@@ -76,8 +78,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->card11->setIconSize(pixmap.rect().size());
     ui->card12->setIconSize(pixmap.rect().size());
 
+=======
+>>>>>>> FETCH_HEAD
     resetDisable();
-    testCards();
 
 }
 void MainWindow::timerEvent(QTimerEvent *event)
@@ -94,7 +97,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
         {
         game->findSet(false);
         check_board_shuffle();
-        testCards();
+        showCards();
         ui->aiScore->setNum(game->ai.get_amount());
         ui->deckSize->setNum(game->board.deckSize());
         }
@@ -150,8 +153,8 @@ void MainWindow::on_Play_Button_clicked()
 
 void MainWindow::on_High_Score_Button_clicked()
 {
-    ui->Set_Stack->setCurrentIndex(3); //High Scores
-    QFile file("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
+     //High Scores
+    QFile file("C:\\Users\\Anish\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
     QString line;
     if (!file.open(IO_ReadOnly)) // Open the file
     {
@@ -184,6 +187,7 @@ void MainWindow::on_High_Score_Button_clicked()
     ui->Score5->setText(line);
     }
     file.close();
+    ui->Set_Stack->setCurrentIndex(3);
 }
 
 void MainWindow::on_Rules_Button_clicked()
@@ -417,7 +421,7 @@ void MainWindow::checkSet() {
         resetClicked();
     }
     game->num_active=0;
-    testCards();
+    showCards();
     resetDisable();
     check_board_shuffle();
 }
@@ -489,6 +493,86 @@ void MainWindow::testCards() {//for testing before images
     QString message12=QString::number(game->board.board[2][3].get_shading())+QString::number(game->board.board[2][3].get_color())+QString::number(game->board.board[2][3].get_shape())+QString::number(game->board.board[2][3].get_number());
     ui->card12->setText(message12);
 }
+
+void MainWindow::showCards() {
+    QString address="C:\\Users\\Anish\\Documents\\GitHub\\SetGame\\Base\\assets\\40percent\\card";
+
+    QString message=address+QString::number(game->board.board[0][0].get_shading())+QString::number(game->board.board[0][0].get_color())+QString::number(game->board.board[0][0].get_shape())+QString::number(game->board.board[0][0].get_number());
+    QPixmap pixmap(message);
+    QIcon cardOne(pixmap);
+    ui->card1->setIcon(cardOne);
+
+    QString message2=address+QString::number(game->board.board[0][1].get_shading())+QString::number(game->board.board[0][1].get_color())+QString::number(game->board.board[0][1].get_shape())+QString::number(game->board.board[0][1].get_number());
+    QPixmap pixmap2(message2);
+    QIcon cardTwo(pixmap2);
+    ui->card2->setIcon(cardTwo);
+
+    QString message3=address+QString::number(game->board.board[0][2].get_shading())+QString::number(game->board.board[0][2].get_color())+QString::number(game->board.board[0][2].get_shape())+QString::number(game->board.board[0][2].get_number());
+    QPixmap pixmap3(message3);
+    QIcon cardThree(pixmap3);
+    ui->card3->setIcon(cardThree);
+
+    QString message4=address+QString::number(game->board.board[0][3].get_shading())+QString::number(game->board.board[0][3].get_color())+QString::number(game->board.board[0][3].get_shape())+QString::number(game->board.board[0][3].get_number());
+    QPixmap pixmap4(message4);
+    QIcon cardFour(pixmap4);
+    ui->card4->setIcon(cardFour);
+
+    QString message5=address+QString::number(game->board.board[1][0].get_shading())+QString::number(game->board.board[1][0].get_color())+QString::number(game->board.board[1][0].get_shape())+QString::number(game->board.board[1][0].get_number());
+    QPixmap pixmap5(message5);
+    QIcon cardFive(pixmap5);
+    ui->card5->setIcon(cardFive);
+
+    QString message6=address+QString::number(game->board.board[1][1].get_shading())+QString::number(game->board.board[1][1].get_color())+QString::number(game->board.board[1][1].get_shape())+QString::number(game->board.board[1][1].get_number());
+    QPixmap pixmap6(message6);
+    QIcon cardSix(pixmap6);
+    ui->card6->setIcon(cardSix);
+
+    QString message7=address+QString::number(game->board.board[1][2].get_shading())+QString::number(game->board.board[1][2].get_color())+QString::number(game->board.board[1][2].get_shape())+QString::number(game->board.board[1][2].get_number());
+    QPixmap pixmap7(message7);
+    QIcon cardSeven(pixmap7);
+    ui->card7->setIcon(cardSeven);
+
+    QString message8=address+QString::number(game->board.board[1][3].get_shading())+QString::number(game->board.board[1][3].get_color())+QString::number(game->board.board[1][3].get_shape())+QString::number(game->board.board[1][3].get_number());
+    QPixmap pixmap8(message8);
+    QIcon cardEight(pixmap8);
+    ui->card8->setIcon(cardEight);
+
+    QString message9=address+QString::number(game->board.board[2][0].get_shading())+QString::number(game->board.board[2][0].get_color())+QString::number(game->board.board[2][0].get_shape())+QString::number(game->board.board[2][0].get_number());
+    QPixmap pixmap9(message9);
+    QIcon cardNine(pixmap9);
+    ui->card9->setIcon(cardNine);
+
+    QString message10=address+QString::number(game->board.board[2][1].get_shading())+QString::number(game->board.board[2][1].get_color())+QString::number(game->board.board[2][1].get_shape())+QString::number(game->board.board[2][1].get_number());
+    QPixmap pixmap10(message10);
+    QIcon cardTen(pixmap10);
+    ui->card10->setIcon(cardTen);
+
+    QString message11=address+QString::number(game->board.board[2][2].get_shading())+QString::number(game->board.board[2][2].get_color())+QString::number(game->board.board[2][2].get_shape())+QString::number(game->board.board[2][2].get_number());
+    QPixmap pixmap11(message11);
+    QIcon cardEleven(pixmap11);
+    ui->card11->setIcon(cardEleven);
+
+    QString message12=address+QString::number(game->board.board[2][3].get_shading())+QString::number(game->board.board[2][3].get_color())+QString::number(game->board.board[2][3].get_shape())+QString::number(game->board.board[2][3].get_number());
+    QPixmap pixmap12(message12);
+    QIcon cardTwelve(pixmap12);
+    ui->card12->setIcon(cardTwelve);
+
+
+    ui->card1->setIconSize(pixmap.rect().size());
+    ui->card2->setIconSize(pixmap.rect().size());
+    ui->card3->setIconSize(pixmap.rect().size());
+    ui->card4->setIconSize(pixmap.rect().size());
+    ui->card5->setIconSize(pixmap.rect().size());
+    ui->card6->setIconSize(pixmap.rect().size());
+    ui->card7->setIconSize(pixmap.rect().size());
+    ui->card8->setIconSize(pixmap.rect().size());
+    ui->card9->setIconSize(pixmap.rect().size());
+    ui->card10->setIconSize(pixmap.rect().size());
+    ui->card11->setIconSize(pixmap.rect().size());
+    ui->card12->setIconSize(pixmap.rect().size());
+
+}
+
 void MainWindow::endgame()
 {
 timer_computer.stop();
