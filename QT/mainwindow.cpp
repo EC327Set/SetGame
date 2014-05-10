@@ -48,15 +48,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     game = new Game();
-
-    game->player.increase_amount();
-    game->player.increase_amount();
-    game->player.increase_amount();
-    game->player.increase_amount();
-    game->player.increase_amount();
-    game->player.increase_amount();
-    game->player.increase_amount();
-
     //makes a new game object
     showCards();
 
