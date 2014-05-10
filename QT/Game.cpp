@@ -37,50 +37,28 @@ bool Game::gameOver() {
 bool Game::highScore() {
 
     ifstream datafile;
-    datafile.open("C:\\Users\\Anish\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
+    datafile.open("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
 
     bool onTheList=false;
     vector<string> players;
     vector<int> scores;
-    int readInt;
-    string readString;
-    string ignore;
-    for(int i=0;i<5;i++)
-    {
-        getline(datafile,readString);
-        players.push_back(readString);
-        datafile >> readInt;
-        getline(datafile,ignore);
-        scores.push_back(readInt);
+    for(int i=0;i<5;i++) {
+        getline(datafile, players[i]);
+        datafile >> scores[i];
     }
     
-    int i=0;
-    /*for (int i=0;i<5;i++) {
-        if (player.get_amount()>=scores[i])
-        {
+
+    for (int i=0;i<5;i++) {
+        if (player.get_amount()>=scores[i]) {
             onTheList=true;
             scores.insert(scores.begin()+i,player.get_amount());
             players.insert(players.begin()+i,player.get_name());
-
+            
         }
-    }*/
-    while (i<5 && !onTheList) {
-        std::cout<<"Name:" << players[i] << endl;
-        std::cout<< "Old:" << scores[i] << endl;
-        if (player.get_amount()>=scores[i])
-        {
-            onTheList=true;
-            scores.insert(scores.begin()+i,player.get_amount());
-            players.insert(players.begin()+i,player.get_name());
-
-        }
-        std::cout<<scores[i]<<endl;
-        std::cout<<players[i]<<endl;
-        i++;
     }
 
     ofstream output;
-    output.open("C:\\Users\\Anish\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
+    output.open("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
     for (int i=0;i<5;i++) {
         output << players[i] << endl;
         output << scores[i] << endl;
