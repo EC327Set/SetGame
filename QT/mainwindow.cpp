@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     game = new Game();
     //makes a new game object
 
-    /*ui->card1->setIcon(ButtonIcon);
+    ui->card1->setIcon(ButtonIcon);
     ui->card2->setIcon(ButtonIcon);
     ui->card3->setIcon(ButtonIcon);
     ui->card4->setIcon(ButtonIcon);
@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->card10->setIconSize(pixmap.rect().size());
     ui->card11->setIconSize(pixmap.rect().size());
     ui->card12->setIconSize(pixmap.rect().size());
-*/
+
     resetDisable();
     testCards();
 

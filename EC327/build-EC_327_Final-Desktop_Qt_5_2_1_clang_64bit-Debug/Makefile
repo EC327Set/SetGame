@@ -495,6 +495,10 @@ compiler_moc_header_clean:
 moc_mainwindow.cpp: ../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		ui_mainwindow.h \
+		../../../Desktop/Set/Game.h \
+		../../../Desktop/Set/Board.h \
+		../../../Desktop/Set/Card.h \
+		../../../Desktop/Set/Player.h \
 		../../../Desktop/Set/mainwindow.h
 	/Users/christineduong/Qt/5.2.1/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 $(INCPATH) ../../../Desktop/Set/mainwindow.h -o moc_mainwindow.cpp
 
@@ -522,6 +526,10 @@ main.o: ../../../Desktop/Set/main.cpp ../../../Desktop/Set/mainwindow.h \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		ui_mainwindow.h \
+		../../../Desktop/Set/Game.h \
+		../../../Desktop/Set/Board.h \
+		../../../Desktop/Set/Card.h \
+		../../../Desktop/Set/Player.h \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../../Desktop/Set/main.cpp
@@ -530,14 +538,20 @@ mainwindow.o: ../../../Desktop/Set/mainwindow.cpp ../../../Desktop/Set/mainwindo
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
 		ui_mainwindow.h \
+		../../../Desktop/Set/Game.h \
+		../../../Desktop/Set/Board.h \
+		../../../Desktop/Set/Card.h \
+		../../../Desktop/Set/Player.h \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsPixmapItem \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsScene \
 		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h \
-		../../../Desktop/Set/Game.h \
-		../../../Desktop/Set/Board.h \
-		../../../Desktop/Set/Card.h \
-		../../../Desktop/Set/Player.h
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimer \
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/qtimer.h \
+		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../Qt/5.2.1/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../../Desktop/Set/mainwindow.cpp
 
 Board.o: ../../../Desktop/Set/Board.cpp ../../../Desktop/Set/Board.h \
@@ -547,7 +561,9 @@ Board.o: ../../../Desktop/Set/Board.cpp ../../../Desktop/Set/Board.h \
 Game.o: ../../../Desktop/Set/Game.cpp ../../../Desktop/Set/Game.h \
 		../../../Desktop/Set/Board.h \
 		../../../Desktop/Set/Card.h \
-		../../../Desktop/Set/Player.h
+		../../../Desktop/Set/Player.h \
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimer \
+		../../../Qt/5.2.1/clang_64/lib/QtCore.framework/Versions/5/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o ../../../Desktop/Set/Game.cpp
 
 Player.o: ../../../Desktop/Set/Player.cpp ../../../Desktop/Set/Player.h
