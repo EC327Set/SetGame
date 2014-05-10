@@ -47,7 +47,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->card12->setCheckable(true);
     ui->setButton->setCheckable(true);
 
+
     game = new Game();
+
+    game->player.increase_amount();
+    game->player.increase_amount();
+    game->player.increase_amount();
+    game->player.increase_amount();
+    game->player.increase_amount();
+    game->player.increase_amount();
+    game->player.increase_amount();
+
     //makes a new game object
 
     /*ui->card1->setIcon(ButtonIcon);
@@ -150,8 +160,8 @@ void MainWindow::on_Play_Button_clicked()
 
 void MainWindow::on_High_Score_Button_clicked()
 {
-    ui->Set_Stack->setCurrentIndex(3); //High Scores
-    QFile file("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
+     //High Scores
+    QFile file("C:\\Users\\Anish\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt"); // Create a file handle for the file named
     QString line;
     if (!file.open(IO_ReadOnly)) // Open the file
     {
@@ -184,6 +194,7 @@ void MainWindow::on_High_Score_Button_clicked()
     ui->Score5->setText(line);
     }
     file.close();
+    ui->Set_Stack->setCurrentIndex(3);
 }
 
 void MainWindow::on_Rules_Button_clicked()
