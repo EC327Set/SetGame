@@ -18,6 +18,7 @@ class Game{
 public:
     Player ai;
 public:
+    void restart_game();
     Game();
     ~Game();
     Player player;

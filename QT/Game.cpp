@@ -24,44 +24,57 @@ Game::Game() {
     Player ai;
     num_active=0;
 }
+void Game::restart_game()
+{
+    board = Board();
+    ai = Player();
+    player = Player();
+    num_active=0;
 
-bool Game::gameOver() {
+}
+
+/*bool Game::gameOver() {
     if (board.deckSize()==0 && !board.isThereASet()) {
         return true;
     }
     else {
         return false;
     }
-}
+}*/
 
 bool Game::highScore() {
-
     ifstream datafile;
-    datafile.open("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
+    datafile.open("/Users/christineduong/Desktop/Set/high_scores.txt");
 
     bool onTheList=false;
     vector<string> players;
     vector<int> scores;
+    string ignore;
+    string readString;
+    int readInt;
     for(int i=0;i<5;i++) {
-        getline(datafile, players[i]);
-        datafile >> scores[i];
+        getline(datafile, readString);
+        players.push_back(readString);
+       datafile >> readInt;
+       scores.push_back(readInt);
+        getline(datafile,ignore);
     }
     
-
-    for (int i=0;i<5;i++) {
+    int i=0;
+    while(i<5 && !onTheList){
         if (player.get_amount()>=scores[i]) {
             onTheList=true;
             scores.insert(scores.begin()+i,player.get_amount());
             players.insert(players.begin()+i,player.get_name());
-            
         }
+        i++;
     }
 
     ofstream output;
-    output.open("C:\\Users\\Matthew\\Documents\\GitHub\\SetGame\\QT\\high_scores.txt");
-    for (int i=0;i<5;i++) {
-        output << players[i] << endl;
-        output << scores[i] << endl;
+    output.open("/Users/christineduong/Desktop/Set/high_scores.txt");
+    for (int j=0;j<5;j++) {
+        output << players[j] << endl;
+        output << scores[j] << endl;
     }
     
     output.close();

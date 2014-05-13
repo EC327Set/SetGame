@@ -8,13 +8,14 @@ Player::Player()
 {
 	name = "Player";
 	amount_sets = 0;
+    wrongSets=0;
 }
 
 Player::Player(string name)
 {
 	name = "Player";
 	amount_sets = 0;
-    turn=false;
+    wrongSets=0;
 }
 int Player::get_amount()
 {
@@ -26,4 +27,8 @@ void Player::increase_amount(int amount)
 }
 string Player::get_name() {
     return name;
+}
+void Player::set_name(string name)
+{
+    this->name = name;
 }

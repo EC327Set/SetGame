@@ -38,14 +38,8 @@ Board::Board() {
     }
 }
 
-/*void Board::draw(int x, int y) { // draws a card into position x,y on the board
-    if (deck.size()!=0) {
-        board[x][y] = deck.back();
-        deck.pop_back();
-    }
-}*/
 
-void Board::draw(Card *position){
+void Board::draw(Card *position){ //this draws a card from the deck onto the board
     if(deck.size()!=0) {
         *position=deck.back();
         deck.pop_back();;
@@ -57,7 +51,7 @@ void Board::draw(Card *position){
 
 bool Board::check_set(Card one, Card two, Card three) { //checks to see if three cards make a set
     
-    if(one.get_color() == -1 || two.get_color() == -1 || three.get_color() == -1)
+    if(one.get_color() == -1 || two.get_color() == -1 || three.get_color() == -1) //"empty card"
         return false;
     bool sameColor = one.get_color()==two.get_color() && two.get_color()==three.get_color();
     bool diffColor = one.get_color()!=two.get_color() && two.get_color()!=three.get_color() && one.get_color()!=three.get_color();
@@ -98,7 +92,7 @@ bool Board::isThereASet() { //iterates through the board
     }
 return false;
 }
-bool Board::pop_back_check()
+bool Board::pop_back_check() //puts cards on board back into deck to check for sets
 {
     for (int i = 0; i < 3 ; i++)
     {
@@ -109,7 +103,7 @@ bool Board::pop_back_check()
     }
     return (check_deck());
 }
-void Board::replot_board()
+void Board::replot_board() //redraws the board from deck
 {
     std::srand(time(0)); //this seeds srand so we get different rand results
     random_shuffle(deck.begin(), deck.end()); // shuffles the deck
@@ -122,7 +116,7 @@ void Board::replot_board()
     }
 }
 
-bool Board::check_deck()
+bool Board::check_deck() //checks to see if there are any sets left with the remaining cards
 {
     for(unsigned int i=0; i < deck.size(); i++){
         for(unsigned int j=0; j < deck.size(); j++){

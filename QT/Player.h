@@ -17,9 +17,10 @@ public:
 	Player();
 	Player(string name);
     
-    bool turn;
+    int wrongSets;
 	int get_amount();
     string get_name();
 	void increase_amount(int amount = 1);
+    void set_name(string name);
 };
 #endif
